@@ -7,25 +7,27 @@
 </head>
     <div class="container">
         <div class="row justify-content-center">
-            <div>
-                <h1 class="text-primary" style="margin-top: 2%">To Do List App <small>(v1.0)</small></h1>
+            <div class="col-md-10">
+                <div class="page-header">
+                    <h1 class="text-primary" style="margin-top: 2%">ToDoListApp <small>(v1.0)</small></h1>
+                </div>
                 <hr>
                 <div class="row">
                     <div class="col-md-4">
                         <form action="#" th:action="@{/indexpost}" th:object="${todo}" method="post">
-                            <input class="form-control" type="text" th:field="*{title}" placeholder="Add title"><br>
-                            <textarea type="text" rows="7" class="form-control" th:field="*{description}" placeholder="Add description"></textarea><br>
-                            <button class="btn btn-success" type="submit">Add Task</button>
+                            <input class="form-control" type="text" th:field="*{title}" placeholder="Başlık Ekle"><br>
+                            <textarea type="text" rows="7" class="form-control" th:field="*{description}" placeholder="Açıklama Ekle"></textarea><br>
+                            <button class="btn btn-success" type="submit">Görevi ekle</button>
                         </form>
                     </div>
                     <div class="col-md-8 align-self-center">
                         <div class="card">
-                            <h5 class="card-header text-primary">Todos</h5>
+                            <h5 class="card-header text-primary">Yapılacaklar Listesi</h5>
                             <div class="card-body" style="height:400px;overflow-y: scroll;overflow-x: hidden;">
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item" th:each="todo : ${todoList}">
-                                        <h5 class="card-title" th:text="${todo.title}">Special title treatment</h5>
-                                        <p class="card-text" th:text="${todo.description}">With supporting text below as a natural lead-in to additional content.</p>
+                                        <h5 class="card-title" th:text="${todo.title}"></h5>
+                                        <p class="card-text" th:text="${todo.description}"></p>
                                     </li>
                                 </ul>
                             </div>
@@ -33,7 +35,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4"></div>
         </div>
     </div>
 </body>
