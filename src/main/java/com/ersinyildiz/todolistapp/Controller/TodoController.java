@@ -1,7 +1,7 @@
-package com.ersinyildiz.todolistapp.Controllers;
+package com.ersinyildiz.todolistapp.Controller;
 
-import com.ersinyildiz.todolistapp.Models.Todo;
-import com.ersinyildiz.todolistapp.Models.TodoDao;
+import com.ersinyildiz.todolistapp.Repository.TodoRepository;
+import com.ersinyildiz.todolistapp.Model.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,20 +15,23 @@ import java.util.List;
 public class TodoController {
 
     @Autowired
-    private TodoDao todoDao;
+    private TodoRepository todoRepository;
+
+
 
     @RequestMapping("/")
     public String index(Model model, @ModelAttribute Todo todo){
         todo = new Todo();
-        List<Todo> todos = (List<Todo>) todoDao.findAll();
+
+        List<Todo> todos = (List<Todo>) todoRepository.findAll();
         model.addAttribute("todoList",todos);
         return "index";
     }
     @RequestMapping(value = "/indexpost",method = RequestMethod.POST)
     public String indexPost(Model model, @ModelAttribute Todo todo){
-        todoDao.save(todo);
+        todoRepository.save(todo);
         todo = new Todo();
-        List<Todo> todos = (List<Todo>) todoDao.findAll();
+        List<Todo> todos = (List<Todo>) todoRepository.findAll();
         model.addAttribute("todoList",todos);
         return "redirect:/";
     }

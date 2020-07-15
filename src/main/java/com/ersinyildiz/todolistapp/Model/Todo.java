@@ -1,4 +1,4 @@
-package com.ersinyildiz.todolistapp.Models;
+package com.ersinyildiz.todolistapp.Model;
 
 import com.sun.istack.NotNull;
 import javax.persistence.*;
