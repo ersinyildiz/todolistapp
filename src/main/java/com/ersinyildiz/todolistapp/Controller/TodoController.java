@@ -17,8 +17,6 @@ public class TodoController {
     @Autowired
     private TodoRepository todoRepository;
 
-
-
     @RequestMapping("/")
     public String index(Model model, @ModelAttribute Todo todo){
         todo = new Todo();
